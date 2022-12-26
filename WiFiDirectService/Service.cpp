@@ -33,7 +33,7 @@ HANDLE                  ghSvcStopEvent = NULL;
 //	_In_ LPWSTR lpCmdLine,
 //	_In_ int nShowCmd
 //)
-int __cdecl _tmain()
+int __cdecl wmain()
 {
 	// Initialize the Windows Runtime.
 	Microsoft::WRL::Wrappers::RoInitializeWrapper initialize(RO_INIT_MULTITHREADED);

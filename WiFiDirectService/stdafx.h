@@ -19,7 +19,6 @@
 #include "targetver.h"
 
 #include <windows.h>
-#include <tchar.h>
 #include <strsafe.h>
 
 #include <windows.devices.wifidirect.h>
@@ -29,8 +28,4 @@
 
 #include <string>
 #include <sstream>
-#include <utility>
-#include <vector>
 #include <map>
-#include <stdio.h>
-#include <tchar.h>
