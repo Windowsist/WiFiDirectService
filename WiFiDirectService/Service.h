@@ -5,5 +5,4 @@ VOID WINAPI SvcMain(DWORD, LPTSTR*);
 
 VOID ReportSvcStatus(DWORD, DWORD, DWORD);
 VOID SvcInit(DWORD, LPTSTR*);
-VOID SvcReportErrorEvent(LPCTSTR);
-VOID SvcReportEvent(LPCTSTR);
+VOID SvcReportEvent(LPCTSTR szFunction, DWORD dwEventID, WORD wType);

@@ -165,10 +165,6 @@
   <ItemGroup>
     <ResourceCompile Include="res.rc" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="gen_res_dll.cmd" />
-    <None Include="res.mc" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

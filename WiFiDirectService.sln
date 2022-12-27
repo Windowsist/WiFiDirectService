@@ -5,6 +5,13 @@ VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WiFiDirectService", "WiFiDirectService\WiFiDirectService.vcxproj", "{BC5264F3-AFD0-4EB8-8DA6-6F0BA622D82C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "解决方案项", "解决方案项", "{F8ACCC2E-0EF8-4F0D-8C0A-BB33CDD097DC}"
+	ProjectSection(SolutionItems) = preProject
+		WiFiDirectService\gen_res_dll.cmd = WiFiDirectService\gen_res_dll.cmd
+		README.md = README.md
+		WiFiDirectService\res.mc = WiFiDirectService\res.mc
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64

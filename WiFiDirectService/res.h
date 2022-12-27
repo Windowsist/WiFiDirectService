@@ -57,7 +57,7 @@
 //
 // MessageText:
 //
-// Info.
+// Info (%2).
 //
 #define SVC_INFO                         ((DWORD)0x40020002L)
 

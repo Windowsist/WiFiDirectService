@@ -39,7 +39,7 @@ int __cdecl wmain()
 	Microsoft::WRL::Wrappers::RoInitializeWrapper initialize(RO_INIT_MULTITHREADED);
 	if (FAILED(initialize))
 	{
-		SvcReportEvent(TEXT("Failed to initialize Windows Runtime"));
+		SvcReportEvent(TEXT("Failed to initialize Windows Runtime"),SVC_ERROR, EVENTLOG_ERROR_TYPE);
 		return static_cast<HRESULT>(initialize);
 	}
 
@@ -55,7 +55,7 @@ int __cdecl wmain()
 
 	if (!StartServiceCtrlDispatcher(DispatchTable))
 	{
-		SvcReportErrorEvent(TEXT("StartServiceCtrlDispatcher"));
+		SvcReportEvent(TEXT("StartServiceCtrlDispatcher"), SVC_ERROR, EVENTLOG_ERROR_TYPE);
 	}
 }
 
@@ -82,7 +82,7 @@ VOID WINAPI SvcMain(DWORD dwArgc, LPTSTR* lpszArgv)
 
 	if (!gSvcStatusHandle)
 	{
-		SvcReportErrorEvent(TEXT("RegisterServiceCtrlHandler"));
+		SvcReportEvent(TEXT("RegisterServiceCtrlHandler"), SVC_ERROR, EVENTLOG_ERROR_TYPE);
 		return;
 	}
 
@@ -237,37 +237,8 @@ VOID WINAPI SvcCtrlHandler(DWORD dwCtrl)
 // Remarks:
 //   The service must have an entry in the Application event log.
 //
-VOID SvcReportErrorEvent(LPCTSTR szFunction)
-{
-	HANDLE hEventSource;
-	LPCTSTR lpszStrings[2];
-	TCHAR Buffer[80];
 
-	hEventSource = RegisterEventSource(NULL, SvcName);
-
-	if (NULL != hEventSource)
-	{
-		StringCchPrintf(Buffer, 80, TEXT("%s failed with %d"), szFunction, GetLastError());
-
-		lpszStrings[0] = SvcName;
-		lpszStrings[1] = Buffer;
-
-		ReportEvent(hEventSource,        // event log handle
-			EVENTLOG_ERROR_TYPE, // event type
-			0,                   // event category
-			SVC_ERROR,           // event identifier
-			NULL,                // no security identifier
-			2,                   // size of lpszStrings array
-			0,                   // no binary data
-			lpszStrings,         // array of strings
-			NULL);               // no binary data
-
-		DeregisterEventSource(hEventSource);
-	}
-}
-
-
-VOID SvcReportEvent(LPCTSTR szFunction)
+VOID SvcReportEvent(LPCTSTR szFunction, DWORD dwEventID,WORD wType)
 {
 	HANDLE hEventSource;
 	LPCTSTR lpszStrings[2];
@@ -280,9 +251,9 @@ VOID SvcReportEvent(LPCTSTR szFunction)
 		lpszStrings[1] = szFunction;
 
 		ReportEvent(hEventSource,        // event log handle
-			EVENTLOG_INFORMATION_TYPE, // event type
+			wType, // event type
 			0,                   // event category
-			SVC_INFO,           // event identifier
+			dwEventID,           // event identifier
 			NULL,                // no security identifier
 			2,                   // size of lpszStrings array
 			0,                   // no binary data
