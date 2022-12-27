@@ -1,4 +1,4 @@
-# WiFiDirectLegacyAP
+# WiFiDirectService
 
 start WiFi Direct AP (hotspot) as a service.
 
