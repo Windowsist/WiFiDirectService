@@ -63,6 +63,7 @@ void SimpleApp::OnAdvertisementAborted(std::wstring message)
 	message.append(L"Soft AP aborted: ");
 	SvcReportEvent(message.c_str(), SVC_ERROR, EVENTLOG_ERROR_TYPE);
 	SetEvent(_apEvent.Get());
+	ReportSvcStatus(SERVICE_STOPPED, NO_ERROR, 0);
 }
 
 void SimpleApp::OnAsyncException(std::wstring message)

@@ -53,4 +53,8 @@
       <Filter>资源文件</Filter>
     </ResourceCompile>
   </ItemGroup>
+  <ItemGroup>
+    <Library Include="ucrt_full.lib" />
+    <Library Include="msvcp_win.lib" />
+  </ItemGroup>
 </Project>
