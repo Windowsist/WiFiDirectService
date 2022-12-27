@@ -60,7 +60,7 @@ void SimpleApp::OnAdvertisementStopped(std::wstring message)
 
 void SimpleApp::OnAdvertisementAborted(std::wstring message)
 {
-	message.append(L"Soft AP aborted: ");
+	message.insert(0,L"Soft AP aborted: ");
 	SvcReportEvent(message.c_str(), SVC_ERROR, EVENTLOG_ERROR_TYPE);
 	SetEvent(_apEvent.Get());
 	ReportSvcStatus(SERVICE_STOPPED, NO_ERROR, 0);
